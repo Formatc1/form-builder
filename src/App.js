@@ -4,12 +4,13 @@ import { createStore, combineReducers} from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory, Link, IndexRoute } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
-import { EditFormContainer } from './EditForm.jsx';
 
-import styles from './styles.scss';
+import counter from './reducers/counter.js';
+import { EditFormContainer } from './components/EditForm/EditForm.jsx';
 
 const store = createStore(
   combineReducers({
+    counter,
     routing: routerReducer
   }), {}, window.devToolsExtension ? window.devToolsExtension() : undefined
 );
@@ -19,7 +20,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 class App extends React.Component {
   render() {
     return (
-      <div className={ styles.redbg }>
+      <div>
         {this.props.children}
       </div>
     );

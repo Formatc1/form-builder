@@ -16,7 +16,7 @@ module.exports = {
     },
     {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass?sourceMap!postcss-loader')
+      loader: 'style-loader!css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass?sourceMap!postcss-loader'
     }]
   },
   postcss: [

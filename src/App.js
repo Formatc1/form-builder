@@ -6,6 +6,8 @@ import { Router, Route, browserHistory, Link, IndexRoute } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { EditFormContainer } from './EditForm.jsx';
 
+import styles from './styles.scss';
+
 const store = createStore(
   combineReducers({
     routing: routerReducer
@@ -17,7 +19,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 class App extends React.Component {
   render() {
     return (
-      <div className='app'>
+      <div className={ styles.redbg }>
         {this.props.children}
       </div>
     );
@@ -28,7 +30,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Link to={'edit'} className=''>Create New</Link>
+        <Link to={'edit'}>Create New</Link>
       </div>
     );
   }

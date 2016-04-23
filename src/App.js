@@ -1,19 +1,18 @@
+import 'babel-polyfill';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers} from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory, Link, IndexRoute } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
 
-import counter from './reducers/counter.js';
-import { EditFormContainer } from './components/EditForm/EditForm.jsx';
+import configureStore from './configureStore.js';
 
-const store = createStore(
-  combineReducers({
-    counter,
-    routing: routerReducer
-  }), {}, window.devToolsExtension ? window.devToolsExtension() : undefined
-);
+// import AsyncApp from './components/AsyncApp.js';
+import EditFormContainer from './components/containers/EditForm.jsx';
+import ViewFormContainer from './components/containers/ViewForm.jsx';
+
+const store = configureStore();
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -32,6 +31,7 @@ class Home extends React.Component {
     return (
       <div>
         <Link to={'edit'}>Create New</Link>
+        <Link to={'view'}>View</Link>
       </div>
     );
   }
@@ -41,11 +41,11 @@ class Main extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        { /* Tell the Router to use our enhanced history */ }
         <Router history={history}>
           <Route path='/' component={App}>
             <IndexRoute component={Home} />
             <Route path='edit' component={EditFormContainer}/>
+            <Route path='view' component={ViewFormContainer}/>
           </Route>
         </Router>
       </Provider>

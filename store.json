@@ -1,0 +1,120 @@
+{
+  "routing": "some-routing-states",
+  "forms": {
+    "schema": [
+      {
+        "type": "text",
+        "name": "input name text",
+        "label": "text for label",
+        "placeholder": "text for placeholder",
+        "value": "value"
+      },
+      {
+        "type": "password",
+        "name": "input name pass",
+        "label": "text for label",
+        "placeholder": "text for placeholder",
+        "value": "value"
+      },
+      {
+        "type": "email",
+        "name": "input name email",
+        "label": "text for label",
+        "placeholder": "text for placeholder",
+        "value": "value"
+      },
+      {
+        "type": "number",
+        "name": "input name number",
+        "label": "text for label",
+        "placeholder": "text for placeholder",
+        "value": "2"
+      },
+      {
+        "type": "radio",
+        "name": "input name radio",
+        "label": "text for label",
+        "options": [
+          {
+            "text": "text for option 1",
+            "value": "value for option 1",
+            "checked": false
+          },
+          {
+            "text": "text for option 2",
+            "value": "value for option 2",
+            "checked": true
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "name": "input name checkbox",
+        "label": "text for label",
+        "options": [
+          {
+            "text": "text for option 1",
+            "value": "value for option 1",
+            "checked": true
+          },
+          {
+            "text": "text for option 2",
+            "value": "value for option 2",
+            "checked": false
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "name": "input name select",
+        "label": "text for label",
+        "value": "value for option 2",
+        "multiple": false,
+        "options": [
+          {
+            "text": "text for option 1",
+            "value": "value for option 1"
+          },
+          {
+            "text": "text for option 2",
+            "value": "value for option 2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "name": "input name select multiple",
+        "label": "text for label",
+        "value": "value for option 1",
+        "multiple": true,
+        "options": [
+          {
+            "text": "text for option 1",
+            "value": "value for option 1"
+          },
+          {
+            "text": "text for option 2",
+            "value": "value for option 2"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "name": "input name textarea",
+        "label": "text for label",
+        "placeholder": "text for placeholder",
+        "value": "value"
+      }
+    ],
+    "entries": [
+      {
+        "input name": "value",
+        "other input name": "value"
+      },
+      {
+        "input name": "value",
+        "other input name": "value"
+      }
+    ]
+  }
+}

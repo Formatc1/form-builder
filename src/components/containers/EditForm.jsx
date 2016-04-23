@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class EditFormContainer extends React.Component {
+export default class EditFormContainer extends React.Component {
   render() {
     return (
       <div>

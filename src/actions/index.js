@@ -1,5 +1,3 @@
-// import fetch from 'isomorphic-fetch';
-
 function fetchedInputs(inputs) {
   return {
     type: 'FETCHED_INPUTS',

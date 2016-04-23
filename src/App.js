@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -8,7 +6,6 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import configureStore from './configureStore.js';
 
-// import AsyncApp from './components/AsyncApp.js';
 import EditFormContainer from './components/containers/EditForm.jsx';
 import ViewFormContainer from './components/containers/ViewForm.jsx';
 

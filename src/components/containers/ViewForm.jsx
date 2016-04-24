@@ -7,18 +7,6 @@ import SelectInput from '../inputs/SelectInput.jsx';
 import TextareaInput from '../inputs/TextareaInput.jsx';
 import { fetchInputs, changeValue } from '../../actions/index.js';
 
-// const mapStateToProps = () => {
-//   return {
-//     type: 'text',
-//     name: 'input name',
-//     label: 'text for label',
-//     placeholder: 'text for placeholder',
-//     value: 'new value'
-//   };
-// };
-
-// const TextInputEnhanced = connect(mapStateToProps)(TextInput);
-
 class ViewFormContainer extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchInputs());
@@ -48,6 +36,7 @@ class ViewFormContainer extends React.Component {
                                 name={schema.name}
                                 label={schema.label}
                                 options={schema.options}
+                                value={schema.value}
                                 onChange={this.handleChange.bind(this)}
                                 key={i} />;
         case 'textarea':
@@ -63,7 +52,6 @@ class ViewFormContainer extends React.Component {
                               name={schema.name}
                               label={schema.label}
                               value={schema.value}
-                              multiple={schema.multiple}
                               options={schema.options}
                               onChange={this.handleChange.bind(this)}
                               key={i} />;

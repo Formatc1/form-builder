@@ -20,3 +20,15 @@ export function changeValue (name, value) {
     value
   };
 }
+
+let autoNum = 0;
+export function changeType (name, type) {
+  return {
+    type: 'CHANGE_TYPE',
+    schema: {
+      name: `input_${autoNum++}`,
+      type
+    },
+    name
+  };
+}

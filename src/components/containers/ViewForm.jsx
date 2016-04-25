@@ -1,10 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import TextInput from '../inputs/TextInput.jsx';
-import CheckboxInput from '../inputs/CheckboxInput.jsx';
-import SelectInput from '../inputs/SelectInput.jsx';
-import TextareaInput from '../inputs/TextareaInput.jsx';
+import { TextInput, CheckboxInput, SelectInput, TextareaInput }
+  from '../inputs/index.js';
 import { fetchInputs, changeValue } from '../../actions/index.js';
 
 class ViewFormContainer extends React.Component {
@@ -40,16 +38,14 @@ class ViewFormContainer extends React.Component {
                                 onChange={this.handleChange.bind(this)}
                                 key={i} />;
         case 'textarea':
-          return <TextareaInput type={schema.type}
-                                name={schema.name}
+          return <TextareaInput name={schema.name}
                                 label={schema.label}
                                 placeholder={schema.placeholder}
                                 value={schema.value}
                                 onChange={this.handleChange.bind(this)}
                                 key={i} />;
         case 'select':
-          return <SelectInput type={schema.type}
-                              name={schema.name}
+          return <SelectInput name={schema.name}
                               label={schema.label}
                               value={schema.value}
                               options={schema.options}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const CheckboxInput = (props) => {
   const handleChange = (target) => {
@@ -29,6 +29,17 @@ const CheckboxInput = (props) => {
       )}
     </div>
   );
+};
+
+CheckboxInput.propTypes = {
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  value: PropTypes.arrayOf(PropTypes.string).isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
+  })).isRequired
 };
 
 export default CheckboxInput;

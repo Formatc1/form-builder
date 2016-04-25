@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const SelectInput = (props) => {
   return (
@@ -14,6 +14,17 @@ const SelectInput = (props) => {
       </select>
     </div>
   );
+};
+
+SelectInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+  })).isRequired
 };
 
 export default SelectInput;

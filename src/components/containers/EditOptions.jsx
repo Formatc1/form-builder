@@ -5,7 +5,7 @@ const EditOptionsContainer = (props) => {
     return (
       <div key={i}>
         <input type={props.type}
-               name={`${props.name}-${option.value}`}
+               name={`${props.name}`}
                value={option.value} />
         <input type='text'
                name={`${props.name}-${option.value}-name`}

@@ -16,11 +16,7 @@ export function fetchInputs () {
 }
 
 export function changeValue (name, value) {
-  return {
-    type: 'CHANGE_VALUE',
-    name,
-    value
-  };
+  return changePropValue(name, 'value', value);
 }
 
 let autoNum = 0;
@@ -32,5 +28,14 @@ export function changeType (name, type) {
       type
     }),
     name
+  };
+}
+
+export function changePropValue (name, key, value) {
+  return {
+    type: 'CHANGE_PROP_VALUE',
+    name,
+    key,
+    value
   };
 }

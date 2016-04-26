@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { TextInput, SelectInput, defaultValues } from '../inputs/index.js';
 import EditOptionsContainer from './EditOptions.jsx';
-import { changeType } from '../../actions/index.js';
+import { changeType, changePropValue } from '../../actions/index.js';
 
 const EditInputContainer = (props) => {
   const renderPlaceholderInputIfNeccessary = () => {
@@ -62,6 +62,12 @@ const EditInputContainer = (props) => {
     props.dispatch(changeType(props.input.name, value));
   };
 
+  const handlePropValue = (key) => {
+    return (_, value) => {
+      props.dispatch(changePropValue(props.input.name, key, value));
+    };
+  };
+
   return (
     <div>
       <SelectInput name={`${props.input.name}-type`}
@@ -75,7 +81,7 @@ const EditInputContainer = (props) => {
                  name={`${props.input.name}-name`}
                  label='Name:'
                  value={props.input.name}
-                 onChange={() => false} />
+                 onChange={handlePropValue('name')} />
       <TextInput type='text'
                 name={`${props.input.name}-label`}
                 label='Label:'

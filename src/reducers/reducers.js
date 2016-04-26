@@ -1,6 +1,12 @@
 // import { combineReducers } from 'redux';
 
 function reducer(state = {}, action) {
+  const changePropValue = () => {
+    let newField = Object.assign({}, state.schema[action.index]);
+    newField[action.key] = action.value;
+    return newField;
+  };
+
   switch (action.type) {
     case 'FETCHED_INPUTS':
       return Object.assign({}, state, {
@@ -9,22 +15,18 @@ function reducer(state = {}, action) {
 
     case 'CHANGE_TYPE':
       return Object.assign({}, state, {
-        schema: state.schema.map((field) => {
-          return field.name === action.name ? action.schema : field;
-        })
+        schema: state.schema
+          .slice(0, action.index)
+          .concat([action.schema])
+          .concat(state.schema.slice(action.index + 1))
       });
 
     case 'CHANGE_PROP_VALUE':
       return Object.assign({}, state, {
-        schema: state.schema.map((field) => {
-          if (field.name === action.name) {
-            let newField = Object.assign({}, field);
-            newField[action.key] = action.value;
-            return newField;
-          } else {
-            return field;
-          }
-        })
+        schema: state.schema
+          .slice(0, action.index)
+          .concat([changePropValue()])
+          .concat(state.schema.slice(action.index + 1))
       });
 
     default:

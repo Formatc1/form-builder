@@ -17,7 +17,7 @@ const EditInputContainer = (props) => {
                           name={`${props.input.name}-placeholder`}
                           label='Placeholder:'
                           value={props.input.placeholder}
-                          onChange={() => false} />;
+                          onChange={handlePropValue('placeholder')} />;
       default:
         return;
     }
@@ -34,7 +34,7 @@ const EditInputContainer = (props) => {
                           name={`${props.input.name}-value`}
                           label='Default value:'
                           value={props.input.value}
-                          onChange={() => false} />;
+                          onChange={handlePropValue('value')} />;
       default:
         return;
     }
@@ -59,12 +59,12 @@ const EditInputContainer = (props) => {
   };
 
   const handleChangeType = (_, value) => {
-    props.dispatch(changeType(props.input.name, value));
+    props.dispatch(changeType(props.index, value));
   };
 
   const handlePropValue = (key) => {
     return (_, value) => {
-      props.dispatch(changePropValue(props.input.name, key, value));
+      props.dispatch(changePropValue(props.index, key, value));
     };
   };
 
@@ -86,7 +86,7 @@ const EditInputContainer = (props) => {
                 name={`${props.input.name}-label`}
                 label='Label:'
                 value={props.input.label}
-                onChange={() => false} />
+                onChange={handlePropValue('label')} />
       {renderPlaceholderInputIfNeccessary()}
       {renderDefaultValueInputIfNeccessary()}
       {renderOptions()}

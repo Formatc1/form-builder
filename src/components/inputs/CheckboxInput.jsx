@@ -3,12 +3,12 @@ import React, { PropTypes } from 'react';
 const CheckboxInput = (props) => {
   const handleChange = (target) => {
     if (props.type === 'radio') {
-      return props.onChange(props.name, [target.value]);
+      return props.onChange(props.index, [target.value]);
     } else {
       if (target.checked) {
-        return props.onChange(props.name, props.value.concat(target.value));
+        return props.onChange(props.index, props.value.concat(target.value));
       } else {
-        return props.onChange(props.name, props.value.filter(v => v !== target.value));
+        return props.onChange(props.index, props.value.filter(v => v !== target.value));
       }
     }
   };
@@ -36,6 +36,7 @@ CheckboxInput.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   value: PropTypes.arrayOf(PropTypes.string).isRequired,
+  index: PropTypes.number,
   options: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired

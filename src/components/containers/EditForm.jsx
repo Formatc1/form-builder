@@ -13,7 +13,7 @@ export default class EditFormContainer extends React.Component {
     return (
       <div>
         {this.props.inputs.map((input, i) =>
-          <EditInputContainer input={input} key={i}/>
+          <EditInputContainer input={input} index={i} key={i}/>
         )}
         <button>Add Input</button>
       </div>

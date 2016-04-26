@@ -26,6 +26,7 @@ class ViewFormContainer extends React.Component {
                             label={schema.label}
                             placeholder={schema.placeholder}
                             value={schema.value}
+                            index={i}
                             onChange={this.handleChange.bind(this)}
                             key={i} />;
         case 'radio':
@@ -35,6 +36,7 @@ class ViewFormContainer extends React.Component {
                                 label={schema.label}
                                 options={schema.options}
                                 value={schema.value}
+                                index={i}
                                 onChange={this.handleChange.bind(this)}
                                 key={i} />;
         case 'textarea':
@@ -42,6 +44,7 @@ class ViewFormContainer extends React.Component {
                                 label={schema.label}
                                 placeholder={schema.placeholder}
                                 value={schema.value}
+                                index={i}
                                 onChange={this.handleChange.bind(this)}
                                 key={i} />;
         case 'select':
@@ -49,6 +52,7 @@ class ViewFormContainer extends React.Component {
                               label={schema.label}
                               value={schema.value}
                               options={schema.options}
+                              index={i}
                               onChange={this.handleChange.bind(this)}
                               key={i} />;
         default:

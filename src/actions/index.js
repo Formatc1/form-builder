@@ -15,26 +15,25 @@ export function fetchInputs () {
    };
 }
 
-export function changeValue (name, value) {
-  return changePropValue(name, 'value', value);
+export function changeValue (index, value) {
+  return changePropValue(index, 'value', value);
 }
 
-let autoNum = 0;
-export function changeType (name, type) {
+export function changeType (index, type) {
   return {
     type: 'CHANGE_TYPE',
     schema: Object.assign({}, defaultValues[type], {
-      name: `input_${autoNum++}`,
+      name: `input_${type}`,
       type
     }),
-    name
+    index
   };
 }
 
-export function changePropValue (name, key, value) {
+export function changePropValue (index, key, value) {
   return {
     type: 'CHANGE_PROP_VALUE',
-    name,
+    index,
     key,
     value
   };

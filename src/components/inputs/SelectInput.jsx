@@ -7,7 +7,7 @@ const SelectInput = (props) => {
       <select id={props.name}
               name={props.name}
               value={props.value}
-              onChange={e => props.onChange(props.name, e.target.value)}>
+              onChange={e => props.onChange(props.index, e.target.value)}>
         {props.options.map((option, i) =>
           <option key={i} value={option.value}>{option.text}</option>
         )}
@@ -21,6 +21,7 @@ SelectInput.propTypes = {
   label: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  index: PropTypes.number,
   options: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired

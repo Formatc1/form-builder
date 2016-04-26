@@ -20,8 +20,7 @@ function reducer(state = {}, action) {
     case 'CHANGE_TYPE':
       return Object.assign({}, state, {
         schema: state.schema.map((field) => {
-          return field.name === action.name ?
-            action.schema : field;
+          return field.name === action.name ? action.schema : field;
         })
       });
 

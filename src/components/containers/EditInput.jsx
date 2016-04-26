@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { TextInput, SelectInput } from '../inputs/index.js';
+import { TextInput, SelectInput, defaultValues } from '../inputs/index.js';
 import EditOptionsContainer from './EditOptions.jsx';
 import { changeType } from '../../actions/index.js';
 
@@ -67,40 +67,9 @@ const EditInputContainer = (props) => {
       <SelectInput name={`${props.input.name}-type`}
                    label='Select type:'
                    value={props.input.type}
-                   options={[
-                     {
-                       text: 'text',
-                       value: 'text'
-                     },
-                     {
-                       text: 'password',
-                       value: 'password'
-                     },
-                     {
-                       text: 'email',
-                       value: 'email'
-                     },
-                     {
-                       text: 'number',
-                       value: 'number'
-                     },
-                     {
-                       text: 'radio',
-                       value: 'radio'
-                     },
-                     {
-                       text: 'checkbox',
-                       value: 'checkbox'
-                     },
-                     {
-                       text: 'select',
-                       value: 'select'
-                     },
-                     {
-                       text: 'textarea',
-                       value: 'textarea'
-                     }
-                   ]}
+                   options={Object.keys(defaultValues).map(key => {
+                     return {text: key, value: key};
+                   })}
                    onChange={handleChangeType} />
       <TextInput type='text'
                  name={`${props.input.name}-name`}

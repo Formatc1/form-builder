@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { TextInput, CheckboxInput, SelectInput, TextareaInput }
+import { TextInput, TextareaInput }
   from '../inputs/index.js';
 import { fetchInputs, changeValue } from '../../actions/index.js';
 
@@ -29,16 +29,6 @@ class ViewFormContainer extends React.Component {
                             index={i}
                             onChange={this.handleChange.bind(this)}
                             key={i} />;
-        case 'radio':
-        case 'checkbox':
-          return <CheckboxInput type={schema.type}
-                                name={schema.name}
-                                label={schema.label}
-                                options={schema.options}
-                                value={schema.value}
-                                index={i}
-                                onChange={this.handleChange.bind(this)}
-                                key={i} />;
         case 'textarea':
           return <TextareaInput name={schema.name}
                                 label={schema.label}
@@ -47,16 +37,8 @@ class ViewFormContainer extends React.Component {
                                 index={i}
                                 onChange={this.handleChange.bind(this)}
                                 key={i} />;
-        case 'select':
-          return <SelectInput name={schema.name}
-                              label={schema.label}
-                              value={schema.value}
-                              options={schema.options}
-                              index={i}
-                              onChange={this.handleChange.bind(this)}
-                              key={i} />;
         default:
-          break;
+          return;
       }
     });
 

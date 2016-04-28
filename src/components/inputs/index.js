@@ -1,6 +1,4 @@
 import TextInput from './TextInput.jsx';
-import CheckboxInput from './CheckboxInput.jsx';
-import SelectInput from './SelectInput.jsx';
 import TextareaInput from './TextareaInput.jsx';
 
 const defaultValues = {
@@ -28,22 +26,7 @@ const defaultValues = {
     label: '',
     placeholder: '',
     value: ''
-  },
-  radio: {
-    label: '',
-    value: [],
-    options: []
-  },
-  checkbox: {
-    label: '',
-    value: [],
-    options: []
-  },
-  select: {
-    label: '',
-    value: '',
-    options: []
   }
 };
 
-export {TextInput, CheckboxInput, SelectInput, TextareaInput, defaultValues};
+export {TextInput, TextareaInput, defaultValues};

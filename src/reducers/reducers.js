@@ -7,6 +7,12 @@ function reducer(state = {}, action) {
     return newField;
   };
 
+  const addOption = () => {
+    let newOptions = Object.assign({}, state.schema[action.index]);
+    newOptions.options.push({text: '', value: ''});
+    return newOptions;
+  };
+
   switch (action.type) {
     case 'FETCHED_INPUTS':
       return Object.assign({}, state, {
@@ -26,6 +32,14 @@ function reducer(state = {}, action) {
         schema: state.schema
           .slice(0, action.index)
           .concat([changePropValue()])
+          .concat(state.schema.slice(action.index + 1))
+      });
+
+    case 'ADD_OPTION':
+      return Object.assign({}, state, {
+        schema: state.schema
+          .slice(0, action.index)
+          .concat([addOption()])
           .concat(state.schema.slice(action.index + 1))
       });
 

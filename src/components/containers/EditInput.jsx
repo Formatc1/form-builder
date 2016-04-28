@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { TextInput, SelectInput, defaultValues } from '../inputs/index.js';
 import EditOptionsContainer from './EditOptions.jsx';
-import { changeType, changePropValue } from '../../actions/index.js';
+import { changeType, changePropValue, addOption } from '../../actions/index.js';
 
 const EditInputContainer = (props) => {
   const renderPlaceholderInputIfNeccessary = () => {
@@ -45,14 +45,16 @@ const EditInputContainer = (props) => {
       case 'radio':
       case 'select':
         return <EditOptionsContainer type='radio'
-                                name={props.input.name}
-                                value={props.input.value}
-                                options={props.input.options} />;
+                                     name={props.input.name}
+                                     value={props.input.value}
+                                     handleAddOption={handleAddOption}
+                                     options={props.input.options} />;
       case 'checkbox':
         return <EditOptionsContainer type='checkbox'
-                                name={props.input.name}
-                                value={props.input.value}
-                                options={props.input.options} />;
+                                     name={props.input.name}
+                                     value={props.input.value}
+                                     handleAddOption={handleAddOption}
+                                     options={props.input.options} />;
       default:
         return;
     }
@@ -66,6 +68,10 @@ const EditInputContainer = (props) => {
     return (_, value) => {
       props.dispatch(changePropValue(props.index, key, value));
     };
+  };
+
+  const handleAddOption = () => {
+      props.dispatch(addOption(props.index));
   };
 
   return (

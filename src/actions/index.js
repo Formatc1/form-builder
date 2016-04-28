@@ -38,3 +38,10 @@ export function changePropValue (index, key, value) {
     value
   };
 }
+
+export function addOption (index) {
+  return {
+    type: 'ADD_OPTION',
+    index
+  };
+}

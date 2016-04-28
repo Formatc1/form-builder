@@ -15,6 +15,19 @@ export function fetchInputs () {
    };
 }
 
+export function changeValue (index, value) {
+  return changePropValue(index, 'value', value);
+}
+
+export function changePropValue (index, key, value) {
+  return {
+    type: 'CHANGE_PROP_VALUE',
+    index,
+    key,
+    value
+  };
+}
+
 export function changeType (index, type) {
   return {
     type: 'CHANGE_TYPE',

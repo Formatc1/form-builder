@@ -7,7 +7,7 @@ import { } from '../../actions/index.js';
 const EditInputContainer = (props) => {
   return (
     <div>
-      {props}
+      input
     </div>
   );
 };

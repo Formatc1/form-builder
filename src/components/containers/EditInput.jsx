@@ -7,7 +7,8 @@ import { changeType,
          changePropValue,
          removeInput,
          addOption,
-         removeOption } from '../../actions/index.js';
+         removeOption,
+         changeOptionPropValue } from '../../actions/index.js';
 
 const EditInputContainer = (props) => {
   const renderPlaceholderInputIfNeccessary = () => {
@@ -53,6 +54,7 @@ const EditInputContainer = (props) => {
                                      value={props.input.value}
                                      handleAddOption={handleAddOption}
                                      handleRemoveOption={handleRemoveOption}
+                                     handleChangeOptionPropValue={handleChangeOptionPropValue}
                                      options={props.input.options} />;
       case 'checkbox':
         return <EditOptionsContainer type='checkbox'
@@ -60,6 +62,7 @@ const EditInputContainer = (props) => {
                                      value={props.input.value}
                                      handleAddOption={handleAddOption}
                                      handleRemoveOption={handleRemoveOption}
+                                     handleChangeOptionPropValue={handleChangeOptionPropValue}
                                      options={props.input.options} />;
       default:
         return;
@@ -76,12 +79,16 @@ const EditInputContainer = (props) => {
     };
   };
 
+  const handleChangeOptionPropValue = (optionIndex, key, value) => {
+    props.dispatch(changeOptionPropValue(props.index, optionIndex, key, value));
+  };
+
   const handleRemoveInput = () => {
     props.dispatch(removeInput(props.index));
   };
 
   const handleAddOption = () => {
-      props.dispatch(addOption(props.index));
+    props.dispatch(addOption(props.index));
   };
 
   const handleRemoveOption = (optionIndex) => {

@@ -20,6 +20,12 @@ function reducer(state = {}, action) {
     return newOptions;
   };
 
+  const changeOptionPropValue = () => {
+    let newOptions = Object.assign({}, state.schema[action.index]);
+    newOptions.options[action.optionIndex][action.key] = action.value;
+    return newOptions;
+  };
+
   switch (action.type) {
     case 'FETCHED_INPUTS':
       return Object.assign({}, state, {
@@ -38,13 +44,13 @@ function reducer(state = {}, action) {
       return Object.assign({}, state, {
         schema: state.schema.slice(0, action.index)
           .concat(state.schema.slice(action.index + 1))
-      });      
+      });
 
     case 'CHANGE_PROP_VALUE':
       return Object.assign({}, state, {
         schema: state.schema
           .slice(0, action.index)
-          .concat([changePropValue()])
+          .concat(changePropValue())
           .concat(state.schema.slice(action.index + 1))
       });
 
@@ -52,7 +58,7 @@ function reducer(state = {}, action) {
       return Object.assign({}, state, {
         schema: state.schema
           .slice(0, action.index)
-          .concat([addOption()])
+          .concat(addOption())
           .concat(state.schema.slice(action.index + 1))
       });
 
@@ -61,6 +67,14 @@ function reducer(state = {}, action) {
       schema: state.schema
         .slice(0, action.index)
         .concat(removeOption())
+        .concat(state.schema.slice(action.index + 1))
+    });
+
+    case 'CHANGE_OPTION_PROP_VALUE':
+    return Object.assign({}, state, {
+      schema: state.schema
+        .slice(0, action.index)
+        .concat(changeOptionPropValue())
         .concat(state.schema.slice(action.index + 1))
     });
 

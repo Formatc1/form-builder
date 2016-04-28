@@ -39,6 +39,16 @@ export function changePropValue (index, key, value) {
   };
 }
 
+export function changeOptionPropValue (index, optionIndex, key, value) {
+  return {
+    type: 'CHANGE_OPTION_PROP_VALUE',
+    index,
+    optionIndex,
+    key,
+    value
+  };
+}
+
 export function removeInput (index) {
   return {
     type: 'REMOVE_INPUT',

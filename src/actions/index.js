@@ -39,9 +39,24 @@ export function changePropValue (index, key, value) {
   };
 }
 
+export function removeInput (index) {
+  return {
+    type: 'REMOVE_INPUT',
+    index
+  };
+}
+
 export function addOption (index) {
   return {
     type: 'ADD_OPTION',
     index
+  };
+}
+
+export function removeOption (index, optionIndex) {
+  return {
+    type: 'REMOVE_OPTION',
+    index,
+    optionIndex
   };
 }

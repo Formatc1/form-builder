@@ -13,7 +13,7 @@ const EditOptionsContainer = (props) => {
         <input type='text'
                name={`${props.name}-${option.value}-value`}
                value={option.value} />
-        <button>Remove Option</button>
+             <button onClick={() => props.handleRemoveOption(i)}>Remove Option</button>
       </div>
     );
   });

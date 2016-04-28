@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 
 import { TextInput, SelectInput, defaultValues } from '../inputs/index.js';
 import EditOptionsContainer from './EditOptions.jsx';
-import { changeType, changePropValue, addOption } from '../../actions/index.js';
+import { changeType,
+         changePropValue,
+         removeInput,
+         addOption,
+         removeOption } from '../../actions/index.js';
 
 const EditInputContainer = (props) => {
   const renderPlaceholderInputIfNeccessary = () => {
@@ -48,12 +52,14 @@ const EditInputContainer = (props) => {
                                      name={props.input.name}
                                      value={props.input.value}
                                      handleAddOption={handleAddOption}
+                                     handleRemoveOption={handleRemoveOption}
                                      options={props.input.options} />;
       case 'checkbox':
         return <EditOptionsContainer type='checkbox'
                                      name={props.input.name}
                                      value={props.input.value}
                                      handleAddOption={handleAddOption}
+                                     handleRemoveOption={handleRemoveOption}
                                      options={props.input.options} />;
       default:
         return;
@@ -70,8 +76,16 @@ const EditInputContainer = (props) => {
     };
   };
 
+  const handleRemoveInput = () => {
+    props.dispatch(removeInput(props.index));
+  };
+
   const handleAddOption = () => {
       props.dispatch(addOption(props.index));
+  };
+
+  const handleRemoveOption = (optionIndex) => {
+    props.dispatch(removeOption(props.index, optionIndex));
   };
 
   return (
@@ -96,7 +110,7 @@ const EditInputContainer = (props) => {
       {renderPlaceholderInputIfNeccessary()}
       {renderDefaultValueInputIfNeccessary()}
       {renderOptions()}
-      <button>Remove Input</button>
+      <button onClick={handleRemoveInput}>Remove Input</button>
     </div>
   );
 };

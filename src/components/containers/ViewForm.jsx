@@ -10,8 +10,8 @@ class ViewFormContainer extends React.Component {
     this.props.dispatch(fetchInputs());
   }
 
-  handleChange(name, value) {
-    this.props.dispatch(changeValue(name, value));
+  handleChange(value, index) {
+    this.props.dispatch(changeValue(index, value));
   }
 
   render() {

@@ -20,7 +20,7 @@ const defaultValues = {
   number: {
     label: '',
     placeholder: '',
-    value: '0'
+    value: 0
   },
   textarea: {
     label: '',

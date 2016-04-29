@@ -31,54 +31,6 @@
         "value": "2"
       },
       {
-        "type": "radio",
-        "name": "input name radio",
-        "label": "text for label",
-        "value": ["value for option 2"],
-        "options": [
-          {
-            "text": "text for option 1",
-            "value": "value for option 1"
-          },
-          {
-            "text": "text for option 2",
-            "value": "value for option 2"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "name": "input name checkbox",
-        "label": "text for label",
-        "value": ["value for option 1"],
-        "options": [
-          {
-            "text": "text for option 1",
-            "value": "value for option 1"
-          },
-          {
-            "text": "text for option 2",
-            "value": "value for option 2"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "name": "input name select",
-        "label": "text for label",
-        "value": "value for option 2",
-        "options": [
-          {
-            "text": "text for option 1",
-            "value": "value for option 1"
-          },
-          {
-            "text": "text for option 2",
-            "value": "value for option 2"
-          }
-        ]
-      },
-      {
         "type": "textarea",
         "name": "input name textarea",
         "label": "text for label",

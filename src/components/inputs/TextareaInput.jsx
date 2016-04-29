@@ -8,7 +8,7 @@ const TextareaInput = (props) => {
              name={props.name}
              placeholder={props.placeholder}
              value={props.value}
-             onChange={e => props.onChange(props.index, e.target.value)} />
+             onChange={e => props.onChange(e.target.value, props.index)} />
     </div>
   );
 };
@@ -19,7 +19,7 @@ TextareaInput.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  index: PropTypes.number
+  index: PropTypes.number.isRequired
 };
 
 export default TextareaInput;

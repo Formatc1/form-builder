@@ -25,7 +25,19 @@ function reducer(state = {}, action) {
       return Object.assign({}, state, {
         schema: state.schema
           .slice(0, action.index)
-          .concat([action.schema])
+          .concat(action.schema)
+          .concat(state.schema.slice(action.index + 1))
+      });
+
+    case 'ADD_INPUT':
+      return Object.assign({}, state, {
+        schema: state.schema.concat(action.schema)
+      });
+
+    case 'REMOVE_INPUT':
+      return Object.assign({}, state, {
+        schema: state.schema
+          .slice(0, action.index)
           .concat(state.schema.slice(action.index + 1))
       });
 

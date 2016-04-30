@@ -38,3 +38,20 @@ export function changeType (index, type) {
     index
   };
 }
+
+export function addInput () {
+  return {
+    type: 'ADD_INPUT',
+    schema: Object.assign({}, defaultValues.text, {
+      name: 'input_text',
+      type: 'text'
+    })
+  };
+}
+
+export function removeInput (index) {
+  return {
+    type: 'REMOVE_INPUT',
+    index
+  };
+}

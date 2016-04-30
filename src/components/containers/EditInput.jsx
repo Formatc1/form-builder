@@ -2,7 +2,9 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { TextInput, defaultValues } from '../inputs/index.js';
-import { changeType, changePropValue } from '../../actions/index.js';
+import { changeType,
+         changePropValue,
+         removeInput } from '../../actions/index.js';
 
 const EditInputContainer = (props) => {
   const typesOptions = Object.keys(defaultValues).map((key, i) =>
@@ -45,6 +47,8 @@ const EditInputContainer = (props) => {
                  index={props.index}
                  value={props.input.name} />
       {additionalFields}
+      <button onClick={() =>
+          props.dispatch(removeInput(props.index))}>Remove input</button>
     </div>
   );
 };

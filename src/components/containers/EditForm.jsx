@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import EditInputContainer from './EditInput.jsx';
-import { fetchInputs } from '../../actions/index.js';
+import { fetchInputs, addInput } from '../../actions/index.js';
 
 export default class EditFormContainer extends React.Component {
   componentDidMount() {
@@ -15,7 +15,8 @@ export default class EditFormContainer extends React.Component {
         {this.props.inputs.map((input, i) =>
           <EditInputContainer input={input} index={i} key={i}/>
         )}
-        <button>Add Input</button>
+        <button onClick={() =>
+          this.props.dispatch(addInput())}>Add Input</button>
       </div>
     );
   }

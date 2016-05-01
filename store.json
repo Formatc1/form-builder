@@ -58,6 +58,7 @@
       {
         "type": "slider",
         "name": "input_slider",
+        "label": "label for slider",
         "min": 0,
         "max": 100,
         "step": 1,

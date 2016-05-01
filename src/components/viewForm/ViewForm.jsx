@@ -7,6 +7,7 @@ import DatePicker from 'react-toolbox/lib/date_picker';
 import Dropdown from 'react-toolbox/lib/dropdown';
 import Input from 'react-toolbox/lib/input';
 import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
+import Slider from 'react-toolbox/lib/slider';
 
 import { fetchInputs, changeValue } from '../../actions/index';
 
@@ -51,18 +52,32 @@ class ViewFormContainer extends React.Component {
                   onChange={this.handleChange.bind(this, i, 'value')} />;
       case 'radio':
         return <RadioGroup
-          className={styles.radioGroup}
-          key={i}
-          name={input.name}
-          value={input.value}
-          onChange={this.handleChange.bind(this, i, 'value')}>
-          {input.options.map((item, i) =>
-            <RadioButton
-              key={i}
-              label={item.label}
-              value={item.value} />
-          )}
+                  className={styles.radioGroup}
+                  key={i}
+                  name={input.name}
+                  value={input.value}
+                  onChange={this.handleChange.bind(this, i, 'value')}>
+                  {input.options.map((item, i) =>
+                    <RadioButton
+                       key={i}
+                       label={item.label}
+                       value={item.value} />
+                  )}
         </RadioGroup>;
+      case 'slider':
+        return  <div>
+          <p>{input.label}</p>
+          <Slider
+             key={i}
+             min={input.min}
+             max={input.max}
+             step={input.step}
+             value={input.value}
+             onChange={this.handleChange.bind(this, i, 'value')}
+             pinned
+             editable />
+        </div>;
+
       default:
         return undefined;
     }

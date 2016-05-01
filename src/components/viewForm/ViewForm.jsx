@@ -65,10 +65,9 @@ class ViewFormContainer extends React.Component {
                   )}
         </RadioGroup>;
       case 'slider':
-        return  <div>
+        return  <div key={i}>
           <p>{input.label}</p>
           <Slider
-             key={i}
              min={input.min}
              max={input.max}
              step={input.step}

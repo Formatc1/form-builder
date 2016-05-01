@@ -6,6 +6,7 @@ import Checkbox from 'react-toolbox/lib/checkbox';
 import DatePicker from 'react-toolbox/lib/date_picker';
 import Dropdown from 'react-toolbox/lib/dropdown';
 import Input from 'react-toolbox/lib/input';
+import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
 
 import { fetchInputs, changeValue } from '../../actions/index';
 
@@ -32,7 +33,6 @@ class ViewFormContainer extends React.Component {
                   onChange={this.handleChange.bind(this, i, 'value')} />;
       case 'dropdown':
         return <Dropdown
-                  className={styles.dropdown}
                   key={i}
                   label={input.label}
                   value={input.value}
@@ -49,6 +49,20 @@ class ViewFormContainer extends React.Component {
                   required={input.required}
                   value={input.value}
                   onChange={this.handleChange.bind(this, i, 'value')} />;
+      case 'radio':
+        return <RadioGroup
+          className={styles.radioGroup}
+          key={i}
+          name={input.name}
+          value={input.value}
+          onChange={this.handleChange.bind(this, i, 'value')}>
+          {input.options.map((item, i) =>
+            <RadioButton
+              key={i}
+              label={item.label}
+              value={item.value} />
+          )}
+        </RadioGroup>;
       default:
         return undefined;
     }

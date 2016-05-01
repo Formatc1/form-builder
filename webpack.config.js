@@ -5,6 +5,9 @@ module.exports = {
   entry: [
     './src/App.js'
   ],
+  resolve: {
+    extensions: ['', '.jsx', '.scss', '.js']
+  },
   output: {
     path: path.resolve('./dist'),
     filename: 'app.js'

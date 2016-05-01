@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory, Link, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import configureStore from './configureStore.js';
+import { Card,
+         CardTitle,
+         CardText,
+         CardActions } from 'react-toolbox/lib/card';
+import {Button} from 'react-toolbox/lib/button';
 
-import EditFormContainer from './components/containers/EditForm.jsx';
-import ViewFormContainer from './components/containers/ViewForm.jsx';
+import configureStore from './configureStore';
+
+import EditFormContainer from './components/containers/EditForm';
+import ViewFormContainer from './components/containers/ViewForm';
+
+import styles from './styles';
 
 const store = configureStore();
 
@@ -23,16 +31,29 @@ class App extends React.Component {
   }
 }
 
-class Home extends React.Component {
-  render() {
-    return (
-      <div>
-        <Link to={'edit'}>Create New</Link>
-        <Link to={'view'}>View</Link>
-      </div>
-    );
-  }
-}
+const Home = () => (
+  <div className={styles.centered}>
+    <Card className={styles.card}>
+      <CardTitle title='Create new form'/>
+      <CardText className={styles.cardText}>
+        Build new form from scratch or edit existing one.
+      </CardText>
+      <CardActions>
+        <Button className={styles.button} href='edit' label='Create' />
+        <Button className={styles.button} href='edit' label='Edit' />
+      </CardActions>
+    </Card>
+    <Card className={styles.card}>
+      <CardTitle title='View form'/>
+      <CardText className={styles.cardText}>
+        View and fill existing form.
+      </CardText>
+      <CardActions>
+        <Button className={styles.button} href='view' label='View' />
+      </CardActions>
+    </Card>
+  </div>
+);
 
 class Main extends React.Component {
   render() {

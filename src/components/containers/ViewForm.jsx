@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { TextInput, TextareaInput }
-  from '../inputs/index.js';
 import { fetchInputs, changeValue } from '../../actions/index.js';
 
 class ViewFormContainer extends React.Component {
@@ -15,36 +13,10 @@ class ViewFormContainer extends React.Component {
   }
 
   render() {
-    const inputs = this.props.inputs.map((schema, i) => {
-      switch (schema.type) {
-        case 'text':
-        case 'password':
-        case 'email':
-        case 'number':
-          return <TextInput type={schema.type}
-                            name={schema.name}
-                            label={schema.label}
-                            placeholder={schema.placeholder}
-                            value={schema.value}
-                            index={i}
-                            onChange={this.handleChange.bind(this)}
-                            key={i} />;
-        case 'textarea':
-          return <TextareaInput name={schema.name}
-                                label={schema.label}
-                                placeholder={schema.placeholder}
-                                value={schema.value}
-                                index={i}
-                                onChange={this.handleChange.bind(this)}
-                                key={i} />;
-        default:
-          return;
-      }
-    });
 
     return (
       <div>
-        {inputs}
+        inputs
       </div>
     );
   }

@@ -9,6 +9,7 @@ import Input from 'react-toolbox/lib/input';
 import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
 import Slider from 'react-toolbox/lib/slider';
 import Switch from 'react-toolbox/lib/switch';
+import TimePicker from 'react-toolbox/lib/time_picker';
 
 import { fetchInputs, changeValue } from '../../actions/index';
 
@@ -84,6 +85,11 @@ class ViewFormContainer extends React.Component {
                   label={input.label}
                   checked={input.checked}
                   onChange={this.handleChange.bind(this, i, 'checked')} />;
+      case 'time-picker':
+        return <TimePicker
+                  key={i}
+                  value={new Date(input.value)}
+                  onChange={this.handleChange.bind(this, i, 'value')} />;
       default:
         return undefined;
     }

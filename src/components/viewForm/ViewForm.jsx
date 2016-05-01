@@ -5,6 +5,7 @@ import { Card, CardTitle, CardText } from 'react-toolbox/lib/card';
 import Checkbox from 'react-toolbox/lib/checkbox';
 import DatePicker from 'react-toolbox/lib/date_picker';
 import Dropdown from 'react-toolbox/lib/dropdown';
+import Input from 'react-toolbox/lib/input';
 
 import { fetchInputs, changeValue } from '../../actions/index';
 
@@ -36,6 +37,17 @@ class ViewFormContainer extends React.Component {
                   label={input.label}
                   value={input.value}
                   source={input.options}
+                  onChange={this.handleChange.bind(this, i, 'value')} />;
+      case 'input':
+        return <Input
+                  key={i}
+                  type='text'
+                  hint={input.hint}
+                  icon={input.icon}
+                  label={input.label}
+                  maxLength={input.maxLength}
+                  required={input.required}
+                  value={input.value}
                   onChange={this.handleChange.bind(this, i, 'value')} />;
       default:
         return undefined;

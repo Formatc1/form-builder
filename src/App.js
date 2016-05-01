@@ -12,8 +12,8 @@ import {Button} from 'react-toolbox/lib/button';
 
 import configureStore from './configureStore';
 
-import EditFormContainer from './components/containers/EditForm';
-import ViewFormContainer from './components/containers/ViewForm';
+import EditFormContainer from './components/editForm/EditForm';
+import ViewFormContainer from './components/viewForm/ViewForm';
 
 import styles from './styles';
 

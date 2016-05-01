@@ -8,6 +8,7 @@ import Dropdown from 'react-toolbox/lib/dropdown';
 import Input from 'react-toolbox/lib/input';
 import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
 import Slider from 'react-toolbox/lib/slider';
+import Switch from 'react-toolbox/lib/switch';
 
 import { fetchInputs, changeValue } from '../../actions/index';
 
@@ -76,7 +77,13 @@ class ViewFormContainer extends React.Component {
              pinned
              editable />
         </div>;
-
+      case 'switch':
+        return <Switch
+                  key={i}
+                  name={input.name}
+                  label={input.label}
+                  checked={input.checked}
+                  onChange={this.handleChange.bind(this, i, 'checked')} />;
       default:
         return undefined;
     }

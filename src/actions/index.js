@@ -1,5 +1,3 @@
-import { defaultValues } from '../components/inputs';
-
 function fetchedInputs(inputs) {
   return {
     type: 'FETCHED_INPUTS',
@@ -15,37 +13,12 @@ export function fetchInputs () {
    };
 }
 
-export function changeValue (index, value) {
-  return changePropValue(index, 'value', value);
-}
-
-export function changePropValue (index, key, value) {
+export function changeValue (index, field, value) {
   return {
-    type: 'CHANGE_PROP_VALUE',
+    type: 'CHANGE_VALUE',
     index,
-    key,
+    field,
     value
-  };
-}
-
-export function changeType (index, type) {
-  return {
-    type: 'CHANGE_TYPE',
-    schema: Object.assign({}, defaultValues[type], {
-      name: `input_${type}`,
-      type
-    }),
-    index
-  };
-}
-
-export function addInput () {
-  return {
-    type: 'ADD_INPUT',
-    schema: Object.assign({}, defaultValues.text, {
-      name: 'input_text',
-      type: 'text'
-    })
   };
 }
 

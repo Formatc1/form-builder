@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Card, CardTitle, CardText } from 'react-toolbox/lib/card';
 import Checkbox from 'react-toolbox/lib/checkbox';
 import DatePicker from 'react-toolbox/lib/date_picker';
+import Dropdown from 'react-toolbox/lib/dropdown';
 
 import { fetchInputs, changeValue } from '../../actions/index';
 
@@ -27,6 +28,14 @@ class ViewFormContainer extends React.Component {
                   key={i}
                   label={input.label}
                   value={new Date(input.value)}
+                  onChange={this.handleChange.bind(this, i, 'value')} />;
+      case 'dropdown':
+        return <Dropdown
+                  className={styles.dropdown}
+                  key={i}
+                  label={input.label}
+                  value={input.value}
+                  source={input.options}
                   onChange={this.handleChange.bind(this, i, 'value')} />;
       default:
         return undefined;

@@ -11,7 +11,7 @@ import Slider from 'react-toolbox/lib/slider';
 import Switch from 'react-toolbox/lib/switch';
 import TimePicker from 'react-toolbox/lib/time_picker';
 
-import { fetchInputs, changeValue } from '../../actions/index';
+import { fetchInputs, changeValue } from '../../actions';
 
 import styles from './styles';
 
@@ -102,7 +102,7 @@ class ViewFormContainer extends React.Component {
   render() {
 
     return (
-      <Card className={styles.card}>
+      <Card className={this.props.styles}>
         <CardTitle title='Form'/>
         <CardText>
           {this.props.inputs.map((input, i) => this.createInput(input, i))}
@@ -114,7 +114,12 @@ class ViewFormContainer extends React.Component {
 
 ViewFormContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  inputs: PropTypes.array.isRequired
+  inputs: PropTypes.array.isRequired,
+  styles: PropTypes.string
+};
+
+ViewFormContainer.defaultProps = {
+  styles: styles.card
 };
 
 const mapStateToProps = (state) => {

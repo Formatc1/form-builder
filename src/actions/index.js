@@ -28,3 +28,9 @@ export function removeInput (index) {
     index
   };
 }
+
+export function toggleAddingDialog () {
+  return {
+    type: 'TOOGLE_ADDING_DIALOG'
+  };
+}

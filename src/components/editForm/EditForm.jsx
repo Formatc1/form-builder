@@ -14,7 +14,7 @@ import Switch from 'react-toolbox/lib/switch';
 import PreviewInput from './PreviewInput';
 import EditInput from './EditInput';
 
-import { fetchInputs, toggleAddingDialog, changeValue } from '../../actions/';
+import { fetchInputs, toggleAddingDialog, openInputToEdit } from '../../actions/';
 
 import styles from './styles';
 
@@ -27,15 +27,15 @@ export default class EditFormContainer extends React.Component {
     this.props.dispatch(toggleAddingDialog());
   }
 
+  handleClickOnInput(index) {
+    this.props.dispatch(openInputToEdit(index));
+  }
+
   getActions() {
     return [
       {label: 'Cancel', onClick: this.handleToggleAddingDialog.bind(this)},
       {label: 'Add', onClick: this.handleToggleAddingDialog.bind(this)}
     ];
-  }
-
-  handleChange(index, value) {
-    this.props.dispatch(changeValue(index, 'value', value));
   }
 
   createInputPreview(input, i) {
@@ -124,7 +124,8 @@ export default class EditFormContainer extends React.Component {
                 <PreviewInput
                   key={i}
                   index={i}
-                  editing={this.props.edit.inputIndex}>
+                  editing={this.props.edit.inputIndex}
+                  handleClick={this.handleClickOnInput.bind(this, i)}>
                   {this.createInputPreview(input, i)}
                 </PreviewInput>
               )}

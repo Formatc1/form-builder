@@ -6,7 +6,8 @@ const PreviewInput = (props) => {
   return (
     <div className={props.editing === props.index
       ? styles.inputContainer__active
-      : styles.inputContainer}>
+      : styles.inputContainer}
+      onClick={props.handleClick}>
       {props.children}
     </div>
   );

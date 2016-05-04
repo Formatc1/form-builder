@@ -34,3 +34,10 @@ export function toggleAddingDialog () {
     type: 'TOOGLE_ADDING_DIALOG'
   };
 }
+
+export function openInputToEdit (index) {
+  return {
+    type: 'OPEN_INPUT_TO_EDIT',
+    index
+  };
+}

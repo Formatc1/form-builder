@@ -7,6 +7,11 @@ function reducer(state = {}, action) {
         activeAddingDialog: !state.activeAddingDialog
       });
 
+    case 'OPEN_INPUT_TO_EDIT':
+      return Object.assign({}, state, {
+        inputIndex: action.index
+      });
+
     default:
       return state;
   }

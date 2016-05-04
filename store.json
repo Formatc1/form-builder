@@ -6,7 +6,7 @@
         "type": "checkbox",
         "name": "input_checkbox",
         "label": "label for checkbox",
-        "checked": false
+        "value": false
       },
       {
         "type": "date-picker",
@@ -68,7 +68,7 @@
         "type": "switch",
         "name": "input_switch",
         "label": "label for switch",
-        "checked": true
+        "value": true
       },
       {
         "type": "time-picker",

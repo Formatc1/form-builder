@@ -16,8 +16,8 @@ import { fetchInputs, changeValue } from '../../actions';
 import styles from './styles';
 
 class ViewFormContainer extends React.Component {
-  handleChange(index, field, value) {
-    this.props.dispatch(changeValue(index, field, value));
+  handleChange(index, value) {
+    this.props.dispatch(changeValue(index, 'value', value));
   }
 
   createInput(input, i) {
@@ -25,22 +25,22 @@ class ViewFormContainer extends React.Component {
       case 'checkbox':
         return <Checkbox
                   key={i}
-                  checked={input.checked}
+                  checked={input.value}
                   label={input.label}
-                  onChange={this.handleChange.bind(this, i, 'checked')} />;
+                  onChange={this.handleChange.bind(this, i)} />;
       case 'date-picker':
         return <DatePicker
                   key={i}
                   label={input.label}
                   value={new Date(input.value)}
-                  onChange={this.handleChange.bind(this, i, 'value')} />;
+                  onChange={this.handleChange.bind(this, i)} />;
       case 'dropdown':
         return <Dropdown
                   key={i}
                   label={input.label}
                   value={input.value}
                   source={input.options}
-                  onChange={this.handleChange.bind(this, i, 'value')} />;
+                  onChange={this.handleChange.bind(this, i)} />;
       case 'input':
         return <Input
                   key={i}
@@ -51,14 +51,14 @@ class ViewFormContainer extends React.Component {
                   maxLength={input.maxLength}
                   required={input.required}
                   value={input.value}
-                  onChange={this.handleChange.bind(this, i, 'value')} />;
+                  onChange={this.handleChange.bind(this, i)} />;
       case 'radio':
         return <RadioGroup
                   className={styles.radioGroup}
                   key={i}
                   name={input.name}
                   value={input.value}
-                  onChange={this.handleChange.bind(this, i, 'value')}>
+                  onChange={this.handleChange.bind(this, i)}>
                   {input.options.map((item, i) =>
                     <RadioButton
                        key={i}
@@ -74,7 +74,7 @@ class ViewFormContainer extends React.Component {
              max={input.max}
              step={input.step}
              value={input.value}
-             onChange={this.handleChange.bind(this, i, 'value')}
+             onChange={this.handleChange.bind(this, i)}
              pinned
              editable />
         </div>;
@@ -83,13 +83,13 @@ class ViewFormContainer extends React.Component {
                   key={i}
                   name={input.name}
                   label={input.label}
-                  checked={input.checked}
-                  onChange={this.handleChange.bind(this, i, 'checked')} />;
+                  checked={input.value}
+                  onChange={this.handleChange.bind(this, i)} />;
       case 'time-picker':
         return <TimePicker
                   key={i}
                   value={new Date(input.value)}
-                  onChange={this.handleChange.bind(this, i, 'value')} />;
+                  onChange={this.handleChange.bind(this, i)} />;
       default:
         return undefined;
     }
@@ -105,7 +105,7 @@ class ViewFormContainer extends React.Component {
       <Card className={this.props.styles}>
         <CardTitle title='Form'/>
         <CardText>
-          {this.props.inputs.map((input, i) => this.createInput(input, i))}
+          {this.props.inputs.map(this.createInput.bind(this))}
         </CardText>
       </Card>
     );

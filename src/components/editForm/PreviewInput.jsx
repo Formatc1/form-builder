@@ -57,10 +57,11 @@ const PreviewInput = (props) => {
           <p className={styles.slider}>{input.label}</p>
           <ProgressBar
             className={styles.slider}
-             min={input.min}
-             max={input.max}
-             buffer={input.value}
-             mode='determinate' />
+            min={input.min}
+            max={input.max}
+            value={input.min}
+            buffer={input.value}
+            mode='determinate' />
         </div>;
       case 'switch':
         return <Switch

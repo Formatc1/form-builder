@@ -80,16 +80,33 @@ const EditInput = (props) => {
   //                      value={item.value} />
   //                 )}
   //       </RadioGroup>;
-  //     case 'slider':
-  //       return  <div>
-  //         <p className={styles.slider}>{input.label}</p>
-  //         <ProgressBar
-  //           className={styles.slider}
-  //            min={input.min}
-  //            max={input.max}
-  //            buffer={input.value}
-  //            mode='determinate' />
-  //       </div>;
+      case 'slider':
+        return <div>
+          <Input
+            value={props.input.label}
+            label='Input label'
+            onChange={props.handleChange.bind(undefined, 'label')} />
+          <Input
+            type='number'
+            value={props.input.min}
+            label='Minimum value'
+            onChange={props.handleChange.bind(undefined, 'min')} />
+          <Input
+            type='number'
+            value={props.input.max}
+            label='Maximum value'
+            onChange={props.handleChange.bind(undefined, 'max')} />
+          <Input
+            type='number'
+            value={props.input.step}
+            label='Step'
+            onChange={props.handleChange.bind(undefined, 'step')} />
+          <Input
+            type='number'
+            value={props.input.value}
+            label='Default value'
+            onChange={props.handleChange.bind(undefined, 'value')} />
+        </div>;
       case 'switch':
         return <div>
           <Input

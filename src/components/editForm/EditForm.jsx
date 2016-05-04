@@ -8,7 +8,10 @@ import { Card, CardTitle, CardText } from 'react-toolbox/lib/card';
 import PreviewInput from './PreviewInput';
 import EditInput from './EditInput';
 
-import { fetchInputs, toggleAddingDialog, openInputToEdit } from '../../actions/';
+import { fetchInputs,
+         toggleAddingDialog,
+         changeValue,
+         openInputToEdit } from '../../actions/';
 
 import styles from './styles';
 
@@ -23,6 +26,10 @@ export default class EditFormContainer extends React.Component {
 
   handleClickOnInput(index) {
     this.props.dispatch(openInputToEdit(index));
+  }
+
+  handleChange(index, field, value) {
+    this.props.dispatch(changeValue(index, field, value));
   }
 
   getActions() {
@@ -40,7 +47,10 @@ export default class EditFormContainer extends React.Component {
             <CardTitle title='Edit'/>
             <CardText>
               {this.props.edit.inputIndex !== undefined
-                ? <EditInput input={this.props.inputs[this.props.edit.inputIndex]} />
+                ? <EditInput
+                    input={this.props.inputs[this.props.edit.inputIndex]}
+                    handleChange={this.handleChange.bind(
+                      this, this.props.edit.inputIndex)} />
                 : 'Select input to edit'}
             </CardText>
           </Card>

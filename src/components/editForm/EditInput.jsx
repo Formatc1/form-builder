@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 import Input from 'react-toolbox/lib/input';
 import Checkbox from 'react-toolbox/lib/checkbox';
 import DatePicker from 'react-toolbox/lib/date_picker';
+import TimePicker from 'react-toolbox/lib/time_picker';
 
 const EditInput = (props) => {
   const createInputEdit = () => {
@@ -35,16 +36,37 @@ const EditInput = (props) => {
   //                 value={input.value}
   //                 source={input.options}
   //                 disabled />;
-  //     case 'input':
-  //       return <Input
-  //                 type='text'
-  //                 hint={input.hint}
-  //                 icon={input.icon}
-  //                 label={input.label}
-  //                 maxLength={input.maxLength}
-  //                 required={input.required}
-  //                 value={input.value}
-  //                 disabled />;
+      case 'input':
+        return <div>
+          <Input
+            value={props.input.label}
+            label='Input label'
+            onChange={props.handleChange.bind(undefined, 'label')} />
+          <Input
+            value={props.input.hint}
+            label='Input hint'
+            onChange={props.handleChange.bind(undefined, 'hint')} />
+          {/* TODO select icon in dialog */}
+          <Input
+            value={props.input.icon}
+            label='Input icon'
+            onChange={props.handleChange.bind(undefined, 'icon')} />
+          <Input
+            type='number'
+            value={props.input.maxLength}
+            label='Max input length'
+            onChange={props.handleChange.bind(undefined, 'maxLength')} />
+          <Checkbox
+            checked={props.input.required}
+            label='Required'
+            onChange={props.handleChange.bind(undefined, 'required')} />
+          <Input
+            type='text'
+            label='Default value'
+            maxLength={props.input.maxLength}
+            value={props.input.value}
+            onChange={props.handleChange.bind(undefined, 'value')} />
+        </div>;
   //     case 'radio':
   //       return <RadioGroup
   //                 className={styles.radioGroup}
@@ -68,17 +90,27 @@ const EditInput = (props) => {
   //            buffer={input.value}
   //            mode='determinate' />
   //       </div>;
-  //     case 'switch':
-  //       return <Switch
-  //                 name={input.name}
-  //                 label={input.label}
-  //                 checked={input.value}
-  //                 disabled />;
-  //     case 'time-picker':
-  //       return <Input
-  //                 value={new Date(input.value)}
-  //                 label={input.label}
-  //                 disabled />;
+      case 'switch':
+        return <div>
+          <Input
+            value={props.input.label}
+            label='Input label'
+            onChange={props.handleChange.bind(undefined, 'label')} />
+          <Checkbox
+            checked={props.input.value}
+            label='Default value'
+            onChange={props.handleChange.bind(undefined, 'value')} />
+        </div>;
+      case 'time-picker':
+        return <div>
+          <Input
+            value={props.input.label}
+            label='Input label'
+            onChange={props.handleChange.bind(undefined, 'label')} />
+          <TimePicker
+            value={new Date(props.input.value)}
+            onChange={props.handleChange.bind(undefined, 'value')} />
+        </div>;
       default:
         return undefined;
     }

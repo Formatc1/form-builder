@@ -6,6 +6,7 @@ import Input from 'react-toolbox/lib/input';
 import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 import Switch from 'react-toolbox/lib/switch';
+import time from 'react-toolbox/lib/utils/time';
 
 import styles from './styles';
 
@@ -20,7 +21,7 @@ const PreviewInput = (props) => {
       case 'date-picker':
         return <Input
                   label={input.label}
-                  value={new Date(input.value)}
+                  value={time.formatDate((new Date(input.value)))}
                   disabled />;
       case 'dropdown':
         return <Dropdown
@@ -69,7 +70,7 @@ const PreviewInput = (props) => {
                   disabled />;
       case 'time-picker':
         return <Input
-                  value={new Date(input.value)}
+                  value={time.formatTime((new Date(input.value)))}
                   label={input.label}
                   disabled />;
       default:

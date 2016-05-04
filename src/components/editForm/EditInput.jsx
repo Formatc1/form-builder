@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 
 import Input from 'react-toolbox/lib/input';
 import Checkbox from 'react-toolbox/lib/checkbox';
+import DatePicker from 'react-toolbox/lib/date_picker';
 
 const EditInput = (props) => {
   const createInputEdit = () => {
@@ -17,11 +18,17 @@ const EditInput = (props) => {
             label='Default value'
             onChange={props.handleChange.bind(undefined, 'value')} />
         </div>;
-  //     case 'date-picker':
-  //       return <Input
-  //                 label={input.label}
-  //                 value={new Date(input.value)}
-  //                 disabled />;
+      case 'date-picker':
+        return <div>
+          <Input
+            value={props.input.label}
+            label='Input label'
+            onChange={props.handleChange.bind(undefined, 'label')} />
+          <DatePicker
+            label='Default value'
+            value={new Date(props.input.value)}
+            onChange={props.handleChange.bind(undefined, 'value')} />
+        </div>;
   //     case 'dropdown':
   //       return <Dropdown
   //                 label={input.label}

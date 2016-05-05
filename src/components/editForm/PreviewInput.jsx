@@ -43,15 +43,14 @@ const PreviewInput = (props) => {
                   disabled />;
       case 'radio':
         return <RadioGroup
-                  className={styles.radioGroup}
                   name={input.name}
                   value={input.value}
                   disabled>
-                  {input.options.map((item, i) =>
+                  {input.options.map((option, i) =>
                     <RadioButton
                        key={i}
-                       label={item.label}
-                       value={item.value} />
+                       label={option}
+                       value={i} />
                   )}
         </RadioGroup>;
       case 'slider':

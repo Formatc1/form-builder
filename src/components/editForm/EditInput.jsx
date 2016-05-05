@@ -41,7 +41,7 @@ const EditInput = (props) => {
             value={props.input.label}
             label='Input label'
             onChange={props.handleChange.bind(undefined, 'label')} />
-          <Card>
+          <Card className={styles.cardBottomMargin}>
             <CardTitle title='Options'/>
             <CardText>
               {props.input.options.map((option, i) =>
@@ -105,19 +105,41 @@ const EditInput = (props) => {
             value={props.input.value}
             onChange={props.handleChange.bind(undefined, 'value')} />
         </div>;
-  //     case 'radio':
-  //       return <RadioGroup
-  //                 className={styles.radioGroup}
-  //                 name={input.name}
-  //                 value={input.value}
-  //                 disabled>
-  //                 {input.options.map((item, i) =>
-  //                   <RadioButton
-  //                      key={i}
-  //                      label={item.label}
-  //                      value={item.value} />
-  //                 )}
-  //       </RadioGroup>;
+      case 'radio':
+        return <div>
+          <Card className={styles.cardBottomMargin}>
+            <CardTitle title='Options'/>
+            <CardText>
+              {props.input.options.map((option, i) =>
+                <div className={styles.flexContainer} key={i}>
+                  <Input
+                    className={styles.flexGrow}
+                    label='Option label'
+                    value={option}
+                    onChange={props.handleOptionChange.bind(undefined, i)}/>
+                  <IconButton
+                    className={styles.removeIcon}
+                    icon='delete'
+                    onClick={props.handleRemoveOption.bind(undefined, i)}
+                    disabled={props.input.options.length < 2} />
+                </div>
+              )}
+            </CardText>
+            <CardActions>
+              <Button
+                label='Add option'
+                onClick={props.handleAddOption}
+                primary />
+            </CardActions>
+          </Card>
+          <Dropdown
+            label='Select default value'
+            value={props.input.value}
+            source={props.input.options.map((option, i) => {
+              return {value: i, label: option};
+            })}
+            onChange={props.handleChange.bind(undefined, 'value')} />
+        </div>;
       case 'slider':
         return <div>
           <Input

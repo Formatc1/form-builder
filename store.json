@@ -39,14 +39,8 @@
         "name": "input_radio",
         "value": 1,
         "options": [
-          {
-            "label": "option 1",
-            "value": 1
-          },
-          {
-            "label": "option 2",
-            "value": 2
-          }
+          "option 1",
+          "option 2"
         ]
       },
       {

@@ -48,7 +48,9 @@ function reducer(state = {}, action) {
             value: {
               $set: state.schema[action.index].value < action.optionIndex
                 ? state.schema[action.index].value
-                : state.schema[action.index].value - 1
+                : state.schema[action.index].value === action.optionIndex
+                  ? 0
+                  : state.schema[action.index].value - 1
             }
           }
         }

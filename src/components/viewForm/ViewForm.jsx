@@ -61,11 +61,11 @@ class ViewFormContainer extends React.Component {
                   name={input.name}
                   value={input.value}
                   onChange={this.handleChange.bind(this, i)}>
-                  {input.options.map((item, i) =>
+                  {input.options.map((option, i) =>
                     <RadioButton
                        key={i}
-                       label={item.label}
-                       value={item.value} />
+                       label={option}
+                       value={i} />
                   )}
         </RadioGroup>;
       case 'slider':

@@ -65,3 +65,9 @@ export function openInputToEdit (index) {
     index
   };
 }
+
+export function doneEditingInput () {
+  return {
+    type: 'DONE_EDITING_INPUT'
+  };
+}

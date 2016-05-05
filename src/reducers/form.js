@@ -56,6 +56,13 @@ function reducer(state = {}, action) {
         }
       });
 
+    case 'REMOVE_INPUT':
+      return update(state, {
+        schema: {
+          $splice: [[action.index, 1]]
+        }
+      });
+
     default:
       return state;
   }

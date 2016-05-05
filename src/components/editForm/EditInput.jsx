@@ -194,7 +194,17 @@ const EditInput = (props) => {
   };
 
   return <div>
-    <p>Type: {props.input.type}</p>
+    <div className={styles.flexContainer}>
+      <h3 className={styles.flexGrow}>Input type: {props.input.type}</h3>
+      <div>
+        <IconButton
+          icon='done'
+          onClick={props.handleClickDone} />
+        <IconButton
+          icon='delete'
+          onClick={props.handleRemoveInput} />
+      </div>
+    </div>
       <Input
         value={props.input.name}
         label='Input name'

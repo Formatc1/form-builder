@@ -12,6 +12,12 @@ function reducer(state = {}, action) {
         inputIndex: action.index
       });
 
+    case 'REMOVE_INPUT':
+    case 'DONE_EDITING_INPUT':
+      return Object.assign({}, state, {
+        inputIndex: undefined
+      });
+
     default:
       return state;
   }

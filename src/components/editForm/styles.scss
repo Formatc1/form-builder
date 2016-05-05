@@ -19,12 +19,20 @@
   display: flex;
   flex-flow: row wrap;
   align-items: stretch;
+  justify-content: center;
+}
+
+.flexGrow {
+  flex-grow: 1;
+}
+
+.removeIcon {
+  margin: 2rem 0;
 }
 
 .card {
   width: 100%;
   max-width: 100%;
-  margin: 0 auto;
 }
 
 .slider {

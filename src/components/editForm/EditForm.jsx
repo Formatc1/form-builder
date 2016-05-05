@@ -13,6 +13,7 @@ import { fetchInputs,
          changeValue,
          changeOptionValue,
          addOption,
+         removeOption,
          openInputToEdit } from '../../actions/';
 
 import styles from './styles';
@@ -34,12 +35,16 @@ export default class EditFormContainer extends React.Component {
     this.props.dispatch(changeValue(index, field, value));
   }
 
-  handleOptionChange(index, field, optionIndex, value) {
-    this.props.dispatch(changeOptionValue(index, field, optionIndex, value));
+  handleOptionChange(index, optionIndex, value) {
+    this.props.dispatch(changeOptionValue(index, optionIndex, value));
   }
 
   handleAddOption(index) {
     this.props.dispatch(addOption(index));
+  }
+
+  handleRemoveOption(index, optionIndex) {
+    this.props.dispatch(removeOption(index, optionIndex));
   }
 
   getActions() {
@@ -66,6 +71,9 @@ export default class EditFormContainer extends React.Component {
                       this, this.props.edit.inputIndex
                     )}
                     handleAddOption={this.handleAddOption.bind(
+                      this, this.props.edit.inputIndex
+                    )}
+                    handleRemoveOption={this.handleRemoveOption.bind(
                       this, this.props.edit.inputIndex
                     )} />
                 : 'Select input to edit'}

@@ -39,7 +39,9 @@ class ViewFormContainer extends React.Component {
                   key={i}
                   label={input.label}
                   value={input.value}
-                  source={input.options}
+                  source={input.options.map((option, i) => {
+                    return {value: i, label: option};
+                  })}
                   onChange={this.handleChange.bind(this, i)} />;
       case 'input':
         return <Input

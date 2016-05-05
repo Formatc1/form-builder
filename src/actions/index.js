@@ -22,11 +22,10 @@ export function changeValue (index, field, value) {
   };
 }
 
-export function changeOptionValue (index, field, optionIndex, value) {
+export function changeOptionValue (index, optionIndex, value) {
   return {
     type: 'CHANGE_OPTION_VALUE',
     index,
-    field,
     value,
     optionIndex
   };
@@ -36,6 +35,14 @@ export function addOption (index) {
   return {
     type: 'ADD_OPTION',
     index
+  };
+}
+
+export function removeOption (index, optionIndex) {
+  return {
+    type: 'REMOVE_OPTION',
+    index,
+    optionIndex
   };
 }
 

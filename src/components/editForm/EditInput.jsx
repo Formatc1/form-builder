@@ -6,7 +6,9 @@ import Checkbox from 'react-toolbox/lib/checkbox';
 import DatePicker from 'react-toolbox/lib/date_picker';
 import TimePicker from 'react-toolbox/lib/time_picker';
 import Dropdown from 'react-toolbox/lib/dropdown';
-import { Button } from 'react-toolbox/lib/button';
+import { Button, IconButton } from 'react-toolbox/lib/button';
+
+import styles from './styles';
 
 const EditInput = (props) => {
   const createInputEdit = () => {
@@ -43,11 +45,18 @@ const EditInput = (props) => {
             <CardTitle title='Options'/>
             <CardText>
               {props.input.options.map((option, i) =>
-                <Input
-                  key={i}
-                  label='Option label'
-                  value={option.label}
-                  onChange={props.handleOptionChange.bind(undefined, 'label', i)}/>
+                <div className={styles.flexContainer} key={i}>
+                  <Input
+                    className={styles.flexGrow}
+                    label='Option label'
+                    value={option}
+                    onChange={props.handleOptionChange.bind(undefined, i)}/>
+                  <IconButton
+                    className={styles.removeIcon}
+                    icon='delete'
+                    onClick={props.handleRemoveOption.bind(undefined, i)}
+                    disabled={props.input.options.length < 2} />
+                </div>
               )}
             </CardText>
             <CardActions>
@@ -60,7 +69,9 @@ const EditInput = (props) => {
           <Dropdown
             label='Select default value'
             value={props.input.value}
-            source={props.input.options}
+            source={props.input.options.map((option, i) => {
+              return {value: i, label: option};
+            })}
             onChange={props.handleChange.bind(undefined, 'value')} />
         </div>;
       case 'input':

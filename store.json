@@ -20,14 +20,8 @@
         "label": "label for dropdown",
         "value": 1,
         "options": [
-          {
-            "value": 1,
-            "label": "option 1"
-          },
-          {
-            "value": 2,
-            "label": "option 2"
-          }
+          "option 1",
+          "option 2"
         ]
       },
       {

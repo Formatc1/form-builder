@@ -27,7 +27,9 @@ const PreviewInput = (props) => {
         return <Dropdown
                   label={input.label}
                   value={input.value}
-                  source={input.options}
+                  source={input.options.map((option, i) => {
+                    return {value: i, label: option};
+                  })}
                   disabled />;
       case 'input':
         return <Input

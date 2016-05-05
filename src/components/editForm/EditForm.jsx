@@ -11,6 +11,8 @@ import EditInput from './EditInput';
 import { fetchInputs,
          toggleAddingDialog,
          changeValue,
+         changeOptionValue,
+         addOption,
          openInputToEdit } from '../../actions/';
 
 import styles from './styles';
@@ -32,6 +34,14 @@ export default class EditFormContainer extends React.Component {
     this.props.dispatch(changeValue(index, field, value));
   }
 
+  handleOptionChange(index, field, optionIndex, value) {
+    this.props.dispatch(changeOptionValue(index, field, optionIndex, value));
+  }
+
+  handleAddOption(index) {
+    this.props.dispatch(addOption(index));
+  }
+
   getActions() {
     return [
       {label: 'Cancel', onClick: this.handleToggleAddingDialog.bind(this)},
@@ -50,7 +60,14 @@ export default class EditFormContainer extends React.Component {
                 ? <EditInput
                     input={this.props.inputs[this.props.edit.inputIndex]}
                     handleChange={this.handleChange.bind(
-                      this, this.props.edit.inputIndex)} />
+                      this, this.props.edit.inputIndex
+                    )}
+                    handleOptionChange={this.handleOptionChange.bind(
+                      this, this.props.edit.inputIndex
+                    )}
+                    handleAddOption={this.handleAddOption.bind(
+                      this, this.props.edit.inputIndex
+                    )} />
                 : 'Select input to edit'}
             </CardText>
           </Card>

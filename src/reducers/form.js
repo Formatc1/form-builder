@@ -16,6 +16,35 @@ function reducer(state = {}, action) {
         }
       });
 
+    case 'CHANGE_OPTION_VALUE':
+    return update(state, {
+      schema: {
+        [action.index]: {
+          options: {
+            [action.optionIndex]: {
+              [action.field]: {$set: action.value}
+            }
+          }
+        }
+      }
+    });
+
+    case 'ADD_OPTION':
+    return update(state, {
+      schema: {
+        [action.index]: {
+          options: {
+            $push: [
+              {
+                value: state.schema[action.index].options.length,
+                label: ''
+              }
+            ]
+          }
+        }
+      }
+    });
+
     default:
       return state;
   }

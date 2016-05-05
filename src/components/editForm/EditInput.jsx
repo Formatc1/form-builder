@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react';
 
+import { Card, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
 import Input from 'react-toolbox/lib/input';
 import Checkbox from 'react-toolbox/lib/checkbox';
 import DatePicker from 'react-toolbox/lib/date_picker';
 import TimePicker from 'react-toolbox/lib/time_picker';
+import Dropdown from 'react-toolbox/lib/dropdown';
+import { Button } from 'react-toolbox/lib/button';
 
 const EditInput = (props) => {
   const createInputEdit = () => {
@@ -30,12 +33,36 @@ const EditInput = (props) => {
             value={new Date(props.input.value)}
             onChange={props.handleChange.bind(undefined, 'value')} />
         </div>;
-  //     case 'dropdown':
-  //       return <Dropdown
-  //                 label={input.label}
-  //                 value={input.value}
-  //                 source={input.options}
-  //                 disabled />;
+      case 'dropdown':
+        return <div>
+          <Input
+            value={props.input.label}
+            label='Input label'
+            onChange={props.handleChange.bind(undefined, 'label')} />
+          <Card>
+            <CardTitle title='Options'/>
+            <CardText>
+              {props.input.options.map((option, i) =>
+                <Input
+                  key={i}
+                  label='Option label'
+                  value={option.label}
+                  onChange={props.handleOptionChange.bind(undefined, 'label', i)}/>
+              )}
+            </CardText>
+            <CardActions>
+              <Button
+                label='Add option'
+                onClick={props.handleAddOption}
+                primary />
+            </CardActions>
+          </Card>
+          <Dropdown
+            label='Select default value'
+            value={props.input.value}
+            source={props.input.options}
+            onChange={props.handleChange.bind(undefined, 'value')} />
+        </div>;
       case 'input':
         return <div>
           <Input

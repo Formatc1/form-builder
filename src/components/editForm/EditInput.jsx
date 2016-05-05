@@ -185,6 +185,7 @@ const EditInput = (props) => {
             label='Input label'
             onChange={props.handleChange.bind(undefined, 'label')} />
           <TimePicker
+            label='Default value'
             value={new Date(props.input.value)}
             onChange={props.handleChange.bind(undefined, 'value')} />
         </div>;
@@ -214,7 +215,12 @@ const EditInput = (props) => {
 };
 
 EditInput.propTypes = {
-  input: PropTypes.object.isRequired
+  input: PropTypes.object.isRequired,
+  handleOptionChange: PropTypes.func.isRequired,
+  handleAddOption: PropTypes.func.isRequired,
+  handleRemoveOption: PropTypes.func.isRequired,
+  handleRemoveInput: PropTypes.func.isRequired,
+  handleClickDone: PropTypes.func.isRequired
 };
 
 export default EditInput;

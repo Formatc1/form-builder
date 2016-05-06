@@ -71,3 +71,17 @@ export function doneEditingInput () {
     type: 'DONE_EDITING_INPUT'
   };
 }
+
+export function changeType (value) {
+  return {
+    type: 'CHANGE_TYPE',
+    value
+  };
+}
+
+export function addInput (input) {
+  return {
+    type: 'ADD_INPUT',
+    input
+  };
+}

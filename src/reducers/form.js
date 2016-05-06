@@ -63,6 +63,13 @@ function reducer(state = {}, action) {
         }
       });
 
+    case 'ADD_INPUT':
+      return update(state, {
+        schema: {
+          $push: [action.input]
+        }
+      });
+
     default:
       return state;
   }

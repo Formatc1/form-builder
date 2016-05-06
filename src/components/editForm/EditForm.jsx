@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { Button } from 'react-toolbox/lib/button';
 import Dialog from 'react-toolbox/lib/dialog';
@@ -88,7 +89,9 @@ const defaultValues = {
 
 export default class EditFormContainer extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchInputs());
+    if (this.props.inputs.length < 1) {
+      this.props.dispatch(fetchInputs());
+    }
   }
 
   handleToggleAddingDialog() {
@@ -154,6 +157,7 @@ export default class EditFormContainer extends React.Component {
   render() {
     return (
       <div>
+        <Link to={'view'}>View</Link>
         <div className={styles.flexContainer}>
           <Card className={styles.card}>
             <CardTitle title='Edit'/>

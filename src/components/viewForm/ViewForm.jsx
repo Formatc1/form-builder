@@ -98,7 +98,9 @@ class ViewFormContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchInputs());
+    if (this.props.inputs.length < 1) {
+      this.props.dispatch(fetchInputs());
+    }
   }
 
   render() {
